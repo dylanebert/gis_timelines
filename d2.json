@@ -11,14 +11,14 @@
 			"body": "<p style=\"font-weight: 300\">31 May</p><p>Implement a vanilla variational autoencoder, trained on the UTZap50K dataset. Goals: Clear and believable generations, smooth interpolations.</p>"
 		},
 		{
-			"date": "2018-07-28T00:00:00.000Z",
-			"title": "Augmented Dataset",
-			"body": "<p style=\"font-weight: 300\">28 Jul</p><p>Augment the dataset with complete attribute sets for each shoe, so each shoe has a value for each of 5-10 attribute values. This could be crowdsourced, mined from reviews, or generated.</p>"
+			"date": "2018-06-14T00:00:00.000Z",
+			"title": "KDE Tests",
+			"body": "<p style=\"font-weight: 300\">14 Jun</p><p>Completed test implementation of kernel density estimation on the latent space. Should provide sufficient evidence whether to follow through with the method, or fall back onto the Attribute2Image timeline.</p>"
 		},
 		{
 			"date": "2018-08-26T00:00:00.000Z",
-			"title": "Attribute2Image cVAE",
-			"body": "<p style=\"font-weight: 300\">26 Aug</p><p>Implement cVAE as described in the Attribute2Image paper to generate images (x|y,z) where x is the output image based on attribute y and latent vector z.</p>"
+			"title": "Density Inference",
+			"body": "<p style=\"font-weight: 300\">26 Aug</p><p>Properly working density functions for each attribute, allowing successful attribute -> latent vector inference. Leaves buffer time to address issues that may arise in tests.</p>"
 		},
 		{
 			"date": "2018-09-16T00:00:00.000Z",
