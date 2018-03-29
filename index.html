@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<head>
+	<title>Timeline</title>
+	<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/TweenMax.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<style>
+	html, body {
+		font-family: 'Roboto', sans-serif;
+		height: 100%;
+	}
+	
+	/* Fixed header */
+	.page-header {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 60px;
+		background-color: #fafafa;
+		text-align: center;
+		padding: 10px;
+		box-shadow: 4px 0px 8px black;
+		z-index: 2;
+	}
+	
+	/* Button to swap to other timeline */
+	#swap-btn {
+		position: absolute;
+		height: 30px;
+		right: 20px;
+		top: 15px;
+	}
+	
+	/* Full page timeline container */
+	.timeline {
+		position: relative;
+		width: 12000px;
+		height: 100%;
+		margin-left: 50%;
+	}
+	
+	/* Actual black bar */
+	.timeline::after {
+		content: '';
+		position: absolute;
+		background-color: black;
+		left: 0;
+		right: 0;
+		bottom: 100px;
+		height: 6px;
+	}
+	
+	/* Content box container */
+	.content {
+		position: absolute;
+		bottom: 100px;
+		top: 150px;
+		left: 0;
+	}
+	
+	/* Circle on timeline */
+	.content::after {
+		content: '';
+		position: absolute;
+		width: 32px;
+		height: 32px;
+		border: 6px solid black;
+		background-color: white;
+		border-radius: 50%;
+		bottom: 0;
+		margin-bottom: -16px;
+		margin-left: -16px;
+		z-index: 1;
+	}
+	
+	/* Content inside box */
+	.inner {
+		position: absolute;
+		background-color: #fafafa;
+		width: 300px;
+		bottom: 50px;
+		margin-left: -150px;
+		box-shadow: 0px 2px 4px black;
+		height: 50px;
+		overflow: hidden;
+		padding: 10px;
+	}
+	
+	/* Content box inner header */
+	.inner .header {
+		height: 30px;
+		text-align: center;
+	}
+	
+	/* Content box inner body */
+	.inner .body {
+		padding: 15px 10px;
+	}
+	
+	/* Box trigger for scrollmagic animation */
+	.trigger {
+		position: absolute;
+		left: -400px;
+		bottom: 0;
+	}
+	
+	/* Date label on timeline */
+	.date {
+		position: absolute;
+		bottom: 50px;
+		width: 1000px;
+		text-align: center;
+	}
+	
+	/* Tick for date label */
+	.date::after {
+		content: '';
+		position: absolute;
+		background-color: black;
+		width: 4px;
+		height: 18px;
+		margin-left: -502px;
+		top: -20px;
+	}
+	
+	/* Fixed red arrow to indicate scroll position on timeline */
+	.indicator {
+		position: fixed;
+		height: 0;
+		left: 50%;
+		margin-left: -12px;
+		bottom: 40px;
+		border: medium solid #F44336;
+		border-width: 0 12px 16px 12px;
+		border-color: transparent transparent #F44336 transparent;
+	}
+	</style>
+</head>
+<body>
+	<div class="page-header">
+		<button type="button" class="btn btn-default" id="swap-btn">Switch timeline</button>
+		<h2>Attribute2Image Method</h2>
+	</div>
+	<div class="indicator"></div>
+	<div class="timeline">
+		<div id="dates">
+			<div class="date" id="d1">
+				<p>Apr</p>
+			</div>
+			<div class="date" id="d2">
+				<p>May</p>
+			</div>
+			<div class="date" id="d3">
+				<p>Jun</p>
+			</div>
+			<div class="date" id="d4">
+				<p>Jul</p>
+			</div>
+			<div class="date" id="d5">
+				<p>Aug</p>
+			</div>
+			<div class="date" id="d6">
+				<p>Sep</p>
+			</div>
+			<div class="date" id="d7">
+				<p>Oct</p>
+			</div>
+			<div class="date" id="d8">
+				<p>Nov</p>
+			</div>
+			<div class="date" id="d9">
+				<p>Dec</p>
+			</div>
+			<div class="date" id="d10">
+				<p>Jan</p>
+			</div>
+			<div class="date" id="d11">
+				<p>Feb</p>
+			</div>
+			<div class="date" id="d12">
+				<p>Mar</p>
+			</div>
+		</div>
+		<div id="timeline-content"></div>
+	</div>
+</body>
+<script src="custom.js"></script>
+</html>

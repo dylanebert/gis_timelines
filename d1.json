@@ -1,0 +1,49 @@
+{
+	"dates": [
+		{
+			"date": "2018-04-23T00:00:00.000Z",
+			"title": "Project Start",
+			"body": "<p style=\"font-weight: 300\">23 Apr</p><p>Each date on the timeline indicates a target completion time for a milestone.</p>"
+		},
+		{
+			"date": "2018-05-31T00:00:00.000Z",
+			"title": "Vanilla VAE",
+			"body": "<p style=\"font-weight: 300\">31 May</p><p>Implement a vanilla variational autoencoder, trained on the UTZap50K dataset. Goals: Clear and believable generations, smooth interpolations.</p>"
+		},
+		{
+			"date": "2018-07-28T00:00:00.000Z",
+			"title": "Augmented Dataset",
+			"body": "<p style=\"font-weight: 300\">28 Jul</p><p>Augment the dataset with complete attribute sets for each shoe, so each shoe has a value for each of 5-10 attribute values. This could be crowdsourced, mined from reviews, or generated.</p>"
+		},
+		{
+			"date": "2018-08-26T00:00:00.000Z",
+			"title": "Attribute2Image cVAE",
+			"body": "<p style=\"font-weight: 300\">26 Aug</p><p>Implement cVAE as described in the Attribute2Image paper to generate images (x|y,z) where x is the output image based on attribute y and latent vector z.</p>"
+		},
+		{
+			"date": "2018-09-16T00:00:00.000Z",
+			"title": "User Interface",
+			"body": "<p style=\"font-weight: 300\">16 Sep</p><p>Design user interface that allows users to generate shoes from attributes, for use in the user study.</p>"
+		},
+		{
+			"date": "2018-09-30T00:00:00.000Z",
+			"title": "IRB",
+			"body": "<p style=\"font-weight: 300\">30 Sep</p><p>Complete IRB, including detailed experiment protocol.</p>"
+		},
+		{
+			"date": "2018-10-13T00:00:00.000Z",
+			"title": "User Study",
+			"body": "<p style=\"font-weight: 300\">13 Oct</p><p>Begin User Study. Aligns with fall semester, which should be a good time for gathering student participants.</p>"
+		},
+		{
+			"date": "2018-12-22T00:00:00.000Z",
+			"title": "Results",
+			"body": "<p style=\"font-weight: 300\">22 Dec</p><p>User studies should be complete, and results should be compiled.</p>"
+		},
+		{
+			"date": "2019-02-28T00:00:00.000Z",
+			"title": "Paper",
+			"body": "<p style=\"font-weight: 300\">28 Feb</p><p>Finish draft of paper about the project, for conference submission.</p>"
+		}
+	]
+}
