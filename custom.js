@@ -7,6 +7,9 @@ $(document).ready(function() {
 	var p1 = 'd1.json';
 	var p2 = 'd2.json';
 	var cur = 0;
+	
+	//fix mobile height
+	//$('.timeline').css({"height": height});
 
 	//horizontal scroll with mouse wheel
 	$('body').mousewheel(function(e, delta) {
